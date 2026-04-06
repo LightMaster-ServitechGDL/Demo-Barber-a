@@ -1,2 +1,2 @@
-# Demo-Barber-a
+# Demo-Barbería
 Demo paquete estándar - Barbería
