@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Señor Barbería — Guadalajara | Cortes Clásicos y Modernos</title>
+<meta name="description" content="Barbería profesional en Guadalajara. Cortes clásicos, modernos y arreglo de barba. Agenda tu cita en línea. Zona Chapultepec.">
+<meta name="keywords" content="barbería Guadalajara, corte de cabello Guadalajara, barba Guadalajara, barbería Chapultepec">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #0F0E0D;
+    --dark: #1C1A17;
+    --brown: #2C2218;
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --cream: #F2EDE4;
+    --gray: #8A8480;
+    --red: #8B2020;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Barlow', sans-serif; background: var(--black); color: var(--cream); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(15,14,13,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .nav-logo-wrap { display: flex; flex-direction: column; line-height: 1; }
+  .nav-logo-main { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.08em; color: var(--gold); }
+  .nav-logo-sub { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gray); margin-top: 1px; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links a { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); text-decoration: none; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { background: var(--gold) !important; color: var(--black) !important; padding: 0.5rem 1.2rem !important; font-weight: 600 !important; transition: background 0.3s !important; }
+  .nav-cta:hover { background: var(--gold-light) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 5rem;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(15,14,13,0.97) 45%, rgba(15,14,13,0.3) 100%);
+    z-index: 2;
+  }
+  .hero-img-bg {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    z-index: 1;
+  }
+  .hero-content {
+    position: relative; z-index: 3;
+    padding: 0 4rem;
+    max-width: 620px;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 0.4rem 1rem;
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 8vw, 7rem);
+    letter-spacing: 0.04em;
+    line-height: 0.95;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+  }
+  .hero-title span { color: var(--gold); }
+  .hero-desc { font-size: 1rem; line-height: 1.7; color: rgba(242,237,228,0.65); max-width: 440px; margin-bottom: 2.5rem; font-weight: 300; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { background: var(--gold); color: var(--black); padding: 0.9rem 2rem; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; font-weight: 600; transition: background 0.3s; }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-outline { border: 1px solid rgba(201,168,76,0.5); color: var(--gold); padding: 0.9rem 2rem; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: border-color 0.3s, color 0.3s; }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--brown);
+    border-top: 1px solid rgba(201,168,76,0.2);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    padding: 1.5rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .stat { text-align: center; }
+  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; color: var(--gold); letter-spacing: 0.05em; line-height: 1; }
+  .stat-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-top: 4px; }
+
+  /* SERVICIOS */
+  #servicios { padding: 6rem 4rem; background: var(--dark); }
+  .section-eyebrow { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+  .section-heading { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 4vw, 3.5rem); letter-spacing: 0.05em; color: var(--cream); margin-bottom: 3rem; line-height: 1; }
+  .section-heading span { color: var(--gold); }
+
+  .servicios-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(201,168,76,0.1); }
+  .servicio-item {
+    background: var(--dark);
+    padding: 2rem;
+    display: flex; flex-direction: column;
+    transition: background 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .servicio-item::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: var(--gold);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .servicio-item:hover { background: rgba(201,168,76,0.05); }
+  .servicio-item:hover::before { transform: scaleX(1); }
+  .servicio-img { width: 100%; height: 160px; object-fit: cover; margin-bottom: 1.25rem; filter: grayscale(30%); transition: filter 0.3s; }
+  .servicio-item:hover .servicio-img { filter: grayscale(0%); }
+  .servicio-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 0.05em; color: var(--cream); margin-bottom: 0.5rem; }
+  .servicio-desc { font-size: 0.83rem; line-height: 1.6; color: var(--gray); flex: 1; margin-bottom: 1rem; font-weight: 300; }
+  .servicio-precio { font-size: 1.1rem; font-weight: 600; color: var(--gold); }
+
+  /* GALERÍA */
+  #galeria { padding: 6rem 4rem; background: var(--black); }
+  .galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 260px);
+    gap: 8px;
+    margin-top: 2.5rem;
+  }
+  .galeria-item { overflow: hidden; position: relative; cursor: pointer; }
+  .galeria-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease, filter 0.4s; filter: grayscale(20%); }
+  .galeria-item:hover img { transform: scale(1.07); filter: grayscale(0%); }
+  .galeria-overlay {
+    position: absolute; inset: 0;
+    background: rgba(15,14,13,0);
+    transition: background 0.3s;
+    display: flex; align-items: flex-end; padding: 1rem;
+  }
+  .galeria-item:hover .galeria-overlay { background: rgba(15,14,13,0.35); }
+  .galeria-tag { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: white; opacity: 0; transition: opacity 0.3s; }
+  .galeria-item:hover .galeria-tag { opacity: 1; }
+
+  /* CITA */
+  #cita { padding: 6rem 4rem; background: var(--brown); }
+  .cita-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 2.5rem; }
+  .cita-info { display: flex; flex-direction: column; gap: 2rem; }
+
+  .horario-table { width: 100%; border-collapse: collapse; }
+  .horario-table tr { border-bottom: 1px solid rgba(201,168,76,0.1); }
+  .horario-table td { padding: 0.75rem 0; font-size: 0.88rem; }
+  .horario-table td:first-child { color: var(--gray); }
+  .horario-table td:last-child { text-align: right; color: var(--cream); font-weight: 500; }
+  .horario-table .hoy td { color: var(--gold); }
+
+  .info-block h4 { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 0.75rem; }
+  .info-row { display: flex; align-items: center; gap: 0.75rem; font-size: 0.88rem; color: rgba(242,237,228,0.7); margin-bottom: 0.6rem; }
+  .info-row svg { flex-shrink: 0; }
+
+  .social-row { display: flex; gap: 0.75rem; margin-top: 0.5rem; }
+  .social-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border: 1px solid rgba(201,168,76,0.3); font-size: 0.78rem; letter-spacing: 0.08em; color: var(--gray); text-decoration: none; transition: border-color 0.3s, color 0.3s; }
+  .social-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* MAP */
+  .map-wrap { margin-top: 1.5rem; }
+  .map-wrap iframe { width: 100%; height: 220px; border: none; filter: grayscale(30%) contrast(1.1); }
+
+  /* FORM CITA */
+  .cita-form { display: flex; flex-direction: column; gap: 1.1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+  .form-group label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); }
+  .form-group input, .form-group select, .form-group textarea {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 0.85rem 1rem;
+    font-family: 'Barlow', sans-serif; font-size: 0.9rem;
+    color: var(--cream); outline: none;
+    transition: border-color 0.3s;
+    appearance: none; -webkit-appearance: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+  .form-group select option { background: var(--dark); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .btn-gold { background: var(--gold); color: var(--black); border: none; padding: 1rem 2rem; font-family: 'Barlow', sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: background 0.3s; display: flex; align-items: center; gap: 0.75rem; width: fit-content; }
+  .btn-gold:hover { background: var(--gold-light); }
+  .btn-gold:disabled { opacity: 0.5; cursor: not-allowed; }
+  .form-status { font-size: 0.85rem; padding: 0.75rem 1rem; display: none; border-left: 3px solid; }
+  .form-status.success { background: rgba(46,125,50,0.15); color: #81c784; border-color: #81c784; display: block; }
+  .form-status.error { background: rgba(198,40,40,0.15); color: #ef9a9a; border-color: #ef9a9a; display: block; }
+
+  /* WHATSAPP */
+  .whatsapp-btn { position: fixed; bottom: 2rem; right: 2rem; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; z-index: 200; transition: transform 0.3s; animation: wapulse 2.5s infinite; }
+  .whatsapp-btn:hover { transform: scale(1.1); }
+  @keyframes wapulse { 0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); } 50% { box-shadow: 0 4px 32px rgba(37,211,102,0.65); } }
+
+  /* FOOTER */
+  footer { background: var(--black); border-top: 1px solid rgba(201,168,76,0.15); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--gray); }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  /* BADGE */
+  .paquete-badge { position: fixed; top: 72px; left: 0; background: #378ADD; color: white; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 1rem; z-index: 99; font-family: 'Barlow', sans-serif; }
+
+  /* ANIMATIONS */
+  .fade-up { opacity: 1; transform: none; transition: opacity 0.7s ease, transform 0.7s ease; }
+  .js-ready .fade-up { opacity: 0; transform: translateY(22px); }
+  .js-ready .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.22s; } .d3 { transition-delay: 0.34s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero-content { padding: 0 1.5rem; }
+    .stats-bar { grid-template-columns: repeat(2,1fr); padding: 1.5rem; }
+    #servicios, #galeria, #cita { padding: 4rem 1.5rem; }
+    .servicios-grid { grid-template-columns: 1fr; }
+    .galeria-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .galeria-item.tall { grid-row: span 1; }
+    .cita-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="paquete-badge">Demo — Paquete Estándar</div>
+
+<nav>
+  <div class="nav-logo-wrap">
+    <span class="nav-logo-main">El Señor</span>
+    <span class="nav-logo-sub">Barbería · Guadalajara</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#cita">Horarios</a></li>
+    <li><a href="#cita" class="nav-cta">Agendar cita</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=85&fit=crop&crop=center" alt="Barbería El Señor" class="hero-img-bg">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Guadalajara, Jalisco — Zona Chapultepec</div>
+    <h1 class="hero-title">EL ARTE<br>DEL <span>CORTE</span><br>PERFECTO</h1>
+    <p class="hero-desc">Barbería clásica con técnicas modernas. Cortes de precisión, arreglo de barba y experiencia premium desde 2015 en el corazón de Guadalajara.</p>
+    <div class="hero-btns">
+      <a href="#cita" class="btn-primary">Agendar cita</a>
+      <a href="#galeria" class="btn-outline">Ver galería</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">9+</div><div class="stat-label">Años de experiencia</div></div>
+  <div class="stat"><div class="stat-num">4.9</div><div class="stat-label">Calificación Google</div></div>
+  <div class="stat"><div class="stat-num">3K+</div><div class="stat-label">Clientes satisfechos</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">Barberos certificados</div></div>
+</div>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <p class="section-eyebrow">Lo que hacemos</p>
+  <h2 class="section-heading">NUESTROS <span>SERVICIOS</span></h2>
+  <div class="servicios-grid">
+    <div class="servicio-item fade-up">
+      <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80&fit=crop" alt="Corte clásico" class="servicio-img">
+      <h3 class="servicio-name">Corte Clásico</h3>
+      <p class="servicio-desc">Tijera y máquina con técnica tradicional. Incluye lavado, secado y productos de acabado premium.</p>
+      <span class="servicio-precio">$150 MXN</span>
+    </div>
+    <div class="servicio-item fade-up d1">
+      <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80&fit=crop" alt="Corte moderno" class="servicio-img">
+      <h3 class="servicio-name">Corte Moderno</h3>
+      <p class="servicio-desc">Fade, undercut, texturizado. Diseños actuales ejecutados con precisión y detalle por nuestros especialistas.</p>
+      <span class="servicio-precio">$180 MXN</span>
+    </div>
+    <div class="servicio-item fade-up d2">
+      <img src="https://images.unsplash.com/photo-1580518337843-f959e992563b?w=600&q=80&fit=crop&crop=top" alt="Arreglo de barba" class="servicio-img">
+      <h3 class="servicio-name">Arreglo de Barba</h3>
+      <p class="servicio-desc">Perfilado, recorte y afeitado con navaja. Toalla caliente y aceites hidratantes para un acabado impecable.</p>
+      <span class="servicio-precio">$120 MXN</span>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section id="galeria">
+  <p class="section-eyebrow">Nuestro trabajo</p>
+  <h2 class="section-heading">GALERÍA <span>DE CORTES</span></h2>
+  <div class="galeria-grid">
+    <div class="galeria-item fade-up">
+      <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80&fit=crop&crop=top" alt="Skin fade">
+      <div class="galeria-overlay"><span class="galeria-tag">Skin Fade</span></div>
+    </div>
+    <div class="galeria-item fade-up d1">
+      <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80&fit=crop&crop=top" alt="Corte moderno">
+      <div class="galeria-overlay"><span class="galeria-tag">Corte moderno</span></div>
+    </div>
+    <div class="galeria-item fade-up d2">
+      <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&q=80&fit=crop&crop=faces" alt="Corte clásico">
+      <div class="galeria-overlay"><span class="galeria-tag">Corte clásico</span></div>
+    </div>
+    <div class="galeria-item fade-up">
+      <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80&fit=crop&crop=top" alt="Arreglo de barba">
+      <div class="galeria-overlay"><span class="galeria-tag">Arreglo de barba</span></div>
+    </div>
+    <div class="galeria-item fade-up d1">
+      <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=600&q=80&fit=crop" alt="Herramientas">
+      <div class="galeria-overlay"><span class="galeria-tag">Nuestras herramientas</span></div>
+    </div>
+    <div class="galeria-item fade-up d2">
+      <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80&fit=crop&crop=top" alt="Barbero en acción">
+      <div class="galeria-overlay"><span class="galeria-tag">Precisión</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- HORARIOS + CITA -->
+<section id="cita">
+  <p class="section-eyebrow">Visítanos</p>
+  <h2 class="section-heading">HORARIOS <span>&</span> CITAS</h2>
+  <div class="cita-grid">
+    <div class="cita-info">
+      <div class="info-block">
+        <h4>Horario de atención</h4>
+        <table class="horario-table">
+          <tr><td>Lunes – Viernes</td><td>9:00 am – 8:00 pm</td></tr>
+          <tr><td>Sábado</td><td>9:00 am – 7:00 pm</td></tr>
+          <tr><td>Domingo</td><td>10:00 am – 4:00 pm</td></tr>
+        </table>
+      </div>
+      <div class="info-block">
+        <h4>Ubicación y contacto</h4>
+        <div class="info-row">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Av. Chapultepec 345, Col. Americana, GDL
+        </div>
+        <div class="info-row">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.63 19.79 19.79 0 012 2.18 2 2 0 014 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.17a16 16 0 006 6l1.27-.63a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +52 33 2345 6789
+        </div>
+        <div class="info-row">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          @elsenorbarberiaGDL
+        </div>
+        <div class="social-row">
+          <a href="#" class="social-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            Facebook
+          </a>
+          <a href="#" class="social-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Instagram
+          </a>
+        </div>
+      </div>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.676!2d-103.3728!3d20.6736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428ae4b06b0b0b0%3A0x0!2sAv.%20Chapultepec%2C%20Guadalajara!5e0!3m2!1ses!2smx!4v1234567890"
+          allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+    </div>
+
+    <form class="cita-form" id="citaForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" name="nombre" placeholder="Tu nombre" required>
+        </div>
+        <div class="form-group">
+          <label>Teléfono</label>
+          <input type="tel" name="telefono" placeholder="33 0000 0000" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Correo electrónico</label>
+        <input type="email" name="email" placeholder="tu@correo.com">
+      </div>
+      <div class="form-group">
+        <label>Servicio</label>
+        <select name="servicio" required>
+          <option value="">Selecciona un servicio</option>
+          <option>Corte clásico — $150</option>
+          <option>Corte moderno — $180</option>
+          <option>Arreglo de barba — $120</option>
+          <option>Corte + barba — $260</option>
+          <option>Otro / consultar</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Fecha preferida</label>
+          <input type="date" name="fecha">
+        </div>
+        <div class="form-group">
+          <label>Hora preferida</label>
+          <select name="hora">
+            <option value="">Seleccionar</option>
+            <option>9:00 am</option>
+            <option>10:00 am</option>
+            <option>11:00 am</option>
+            <option>12:00 pm</option>
+            <option>1:00 pm</option>
+            <option>3:00 pm</option>
+            <option>4:00 pm</option>
+            <option>5:00 pm</option>
+            <option>6:00 pm</option>
+            <option>7:00 pm</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Notas adicionales</label>
+        <textarea name="notas" placeholder="Alguna referencia de corte, petición especial..."></textarea>
+      </div>
+      <div class="form-status" id="formStatus"></div>
+      <button type="submit" class="btn-gold" id="submitBtn">
+        <span>Confirmar cita</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </button>
+      <p style="font-size:0.75rem; color:var(--gray); margin-top:0.5rem;">Te confirmaremos tu cita por WhatsApp a la brevedad.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 El Señor Barbería — Guadalajara, Jalisco</span>
+  <span>Diseño web por <a href="https://servitechgdl.com">ServitechGDL</a></span>
+</footer>
+
+<a href="https://wa.me/5213351646687?text=Hola%2C%20quiero%20agendar%20una%20cita%20en%20El%20Se%C3%B1or%20Barber%C3%ADa" target="_blank" class="whatsapp-btn" title="Agendar por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  document.documentElement.classList.add('js-ready');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  setTimeout(() => {
+    document.querySelectorAll('.fade-up:not(.visible)').forEach(el => el.classList.add('visible'));
+  }, 800);
+
+  // Marcar día actual en horarios
+  const dias = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  const hoy = new Date().getDay();
+  document.querySelectorAll('.horario-table tr').forEach((tr, i) => {
+    if ((i === 0 && hoy >= 1 && hoy <= 5) || (i === 1 && hoy === 6) || (i === 2 && hoy === 0)) {
+      tr.classList.add('hoy');
+    }
+  });
+
+  // Fecha mínima = hoy
+  const fechaInput = document.querySelector('input[name="fecha"]');
+  if (fechaInput) fechaInput.min = new Date().toISOString().split('T')[0];
+
+  // FORMULARIO — Google Apps Script
+  // PASO 1: Google Sheets → Extensiones → Apps Script
+  // PASO 2: Pega el siguiente código:
+  /*
+  function doPost(e) {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var data = JSON.parse(e.postData.contents);
+    sheet.appendRow([data.fecha_envio, data.nombre, data.telefono, data.email, data.servicio, data.fecha_cita, data.hora, data.notas, data.origen]);
+    return ContentService.createTextOutput(JSON.stringify({result:'ok'})).setMimeType(ContentService.MimeType.JSON);
+  }
+  */
+  // PASO 3: Publicar → App web → Acceso: Cualquier usuario → Copiar URL
+  const APPS_SCRIPT_URL = 'TU_URL_DE_APPS_SCRIPT_AQUI';
+
+  document.getElementById('citaForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const status = document.getElementById('formStatus');
+    const form = e.target;
+    btn.querySelector('span').textContent = 'Enviando...';
+    btn.disabled = true;
+    status.className = 'form-status';
+
+    const data = {
+      nombre: form.nombre.value,
+      telefono: form.telefono.value,
+      email: form.email.value,
+      servicio: form.servicio.value,
+      fecha_cita: form.fecha.value,
+      hora: form.hora.value,
+      notas: form.notas.value,
+      fecha_envio: new Date().toLocaleString('es-MX'),
+      origen: 'El Señor Barbería'
+    };
+
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST', mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      status.textContent = '¡Cita solicitada! Te confirmaremos por WhatsApp a la brevedad.';
+      status.className = 'form-status success';
+      form.reset();
+    } catch(err) {
+      status.textContent = 'Error al enviar. Escríbenos directamente por WhatsApp.';
+      status.className = 'form-status error';
+    }
+
+    btn.querySelector('span').textContent = 'Confirmar cita';
+    btn.disabled = false;
+  });
+</script>
+</body>
+</html>
